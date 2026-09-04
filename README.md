@@ -1,397 +1,344 @@
-# 🧪 Testes de Integração & E2E
+# 🧪 Testes de Integração e End-to-End (E2E)
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:F7DF1E,50:00A98F,100:2EAD33&height=200&section=header&text=Testes%20de%20Software&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=35" width="100%"/>
+  <img src="https://img.shields.io/badge/QA-Testes%20de%20Software-e91e63?style=for-the-badge" alt="QA">
+  <img src="https://img.shields.io/badge/Testes-Integração-9c27b0?style=for-the-badge" alt="Testes de Integração">
+  <img src="https://img.shields.io/badge/Testes-E2E-673ab7?style=for-the-badge" alt="Testes E2E">
 </p>
 
 <p align="center">
-  <strong>🔗 Testes de Integração • 🌐 Testes End-to-End • 🤖 Automação</strong>
-</p>
-
-<p align="center">
-  Projeto acadêmico desenvolvido para explorar a importância dos testes de software e da automação de fluxos completos de uma aplicação.
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/QA-Quality%20Assurance-2EAD33?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
-  <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white"/>
+  Projeto desenvolvido para estudar e praticar <strong>Testes de Integração</strong> e <strong>Testes End-to-End (E2E)</strong>, verificando o funcionamento de aplicações a partir da perspectiva do usuário.
 </p>
 
 ---
 
-## 📌 Índice
+## 📚 Sobre o Projeto
 
-<details>
-<summary>📚 Clique para navegar</summary>
+Este projeto aborda dois importantes níveis de testes de software:
 
-* [🎯 Sobre o projeto](#-sobre-o-projeto)
-* [💡 Objetivos](#-objetivos)
-* [🔗 Testes de Integração](#-testes-de-integração)
-* [🌐 Testes E2E](#-testes-end-to-end-e2e)
-* [🆚 Integração x E2E](#-integração-x-e2e)
-* [🛠️ Tecnologias](#️-tecnologias)
-* [🤖 Ferramentas E2E](#-ferramentas-e2e)
-* [🧪 Demonstração prática](#-demonstração-prática)
-* [📂 Estrutura](#-estrutura-do-projeto)
-* [📊 Fluxo do teste](#-fluxo-do-teste)
-* [✅ Conclusão](#-conclusão)
+* 🔗 **Testes de Integração**
+* 🌐 **Testes End-to-End (E2E)**
 
-</details>
+O objetivo é compreender como diferentes partes de uma aplicação trabalham em conjunto e como podemos validar uma **jornada completa do usuário**, desde a navegação pelas telas até a comunicação com uma API.
+
+Além da parte teórica, o projeto conta com uma **demonstração prática de um fluxo automatizado no navegador**, utilizando ferramentas de testes E2E.
 
 ---
 
-# 🎯 Sobre o projeto
+## 🎯 Objetivos
 
-Este projeto apresenta conceitos fundamentais relacionados a **Testes de Integração** e **Testes End-to-End (E2E)**.
+Ao desenvolver este projeto, buscamos:
 
-A proposta é compreender como diferentes partes de uma aplicação trabalham juntas e como podemos automatizar uma **jornada completa do usuário**.
-
-Durante o projeto, são abordados:
-
-> 🔗 Comunicação entre telas, componentes e APIs
-> 🌐 Simulação da navegação de um usuário
-> 🤖 Automação de testes
-> 🧪 Execução de cenários E2E
-> ✅ Validação dos resultados esperados
+* 🧠 Compreender o conceito de Teste de Integração;
+* 🔗 Verificar a comunicação entre telas, componentes e APIs;
+* 🌐 Entender o funcionamento dos Testes End-to-End;
+* 👤 Simular a jornada real de um usuário;
+* 🤖 Conhecer ferramentas de automação de testes;
+* 🧪 Criar e executar um teste E2E simples;
+* ✅ Identificar possíveis falhas em um fluxo completo da aplicação.
 
 ---
 
-# 💡 Objetivos
+# 🔗 1. Testes de Integração
 
-### 🧠 Conhecimento
+Os **Testes de Integração** verificam se diferentes partes de um sistema conseguem trabalhar corretamente em conjunto.
 
-* Entender o conceito de Teste de Integração;
-* Compreender o funcionamento dos testes E2E;
-* Identificar as diferenças entre os dois tipos de teste.
+Enquanto um teste unitário pode verificar apenas um componente ou função isoladamente, o teste de integração analisa a comunicação entre diferentes partes da aplicação.
 
-### 🧪 Prática
+### 💡 Exemplo
 
-* Criar um cenário de teste;
-* Automatizar uma jornada do usuário;
-* Executar o teste diretamente no navegador;
-* Validar o resultado esperado.
-
-### 🚀 Qualidade
-
-* Encontrar falhas;
-* Aumentar a confiabilidade da aplicação;
-* Garantir que diferentes partes do sistema funcionem em conjunto.
-
----
-
-# 🔗 Testes de Integração
-
-Os **Testes de Integração** verificam se diferentes partes de uma aplicação conseguem se comunicar corretamente.
-
-Imagine um sistema de login:
+Imagine uma tela de login:
 
 ```text
-       👤 USUÁRIO
-            │
-            ▼
-      🖥️ TELA DE LOGIN
-            │
-            ▼
-      🧩 COMPONENTE
-            │
-            ▼
-         🔌 API
-            │
-            ▼
-       🗄️ BANCO DE DADOS
+┌──────────────┐
+│ Tela de Login│
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│ Componente   │
+│ de Login     │
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│     API      │
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│ Banco de     │
+│ Dados        │
+└──────────────┘
 ```
 
-O objetivo é verificar se cada etapa consegue conversar corretamente com a próxima.
+O teste de integração pode verificar se:
 
-### 🔍 Exemplos
+* A tela envia corretamente os dados;
+* O componente realiza a chamada para a API;
+* A API responde corretamente;
+* A aplicação interpreta a resposta;
+* O usuário recebe a mensagem ou é direcionado para a próxima tela.
 
-| Integração              | Verificação                 |
-| ----------------------- | --------------------------- |
-| 🖥️ Tela → Componente   | Dados enviados corretamente |
-| 🧩 Componente → API     | Requisição realizada        |
-| 🔌 API → Banco          | Dados consultados           |
-| 🔐 Login → Autenticação | Usuário validado            |
-| 🌐 Front-end → Back-end | Comunicação funcionando     |
+### 🔎 O que pode ser testado?
+
+| Integração              | O que verificar              |
+| ----------------------- | ---------------------------- |
+| 🖥️ Tela + componente   | Comunicação correta          |
+| 🧩 Componente + API     | Envio e recebimento de dados |
+| 🔌 API + banco          | Persistência das informações |
+| 🔐 Login + autenticação | Validação das credenciais    |
+| 📦 Front-end + Back-end | Funcionamento conjunto       |
 
 ---
 
-# 🌐 Testes End-to-End (E2E)
+# 🌐 2. Testes End-to-End (E2E)
 
-Os testes **End-to-End** verificam o sistema de ponta a ponta.
+Os **Testes End-to-End**, conhecidos como **E2E**, verificam uma aplicação de ponta a ponta.
 
-Nesse tipo de teste, simulamos ações que um usuário real faria dentro da aplicação.
+O objetivo é reproduzir uma situação próxima daquilo que um usuário real faria.
 
-### 👤 Exemplo: Login
+Em vez de testar apenas uma função ou integração específica, o E2E verifica um **fluxo completo**.
+
+### 👤 Exemplo de jornada
+
+Um teste E2E de login pode seguir o seguinte fluxo:
 
 ```text
-🌐 Acessar site
-      ↓
-🔐 Abrir login
-      ↓
-📧 Digitar e-mail
-      ↓
-🔑 Digitar senha
-      ↓
+🚀 Início
+   ↓
+🌐 Acessar o sistema
+   ↓
+🔐 Abrir tela de login
+   ↓
+✏️ Informar usuário
+   ↓
+🔑 Informar senha
+   ↓
 🖱️ Clicar em "Entrar"
-      ↓
-⏳ Sistema processa
-      ↓
-✅ Login realizado
-      ↓
-🏠 Dashboard
+   ↓
+✅ Validar login
+   ↓
+🏠 Verificar página inicial
+   ↓
+🎉 Fluxo concluído
 ```
 
-O teste não verifica somente um botão.
-
-Ele verifica se **todo o fluxo funciona corretamente**.
+Esse tipo de teste ajuda a verificar se as diferentes partes da aplicação funcionam corretamente **juntas**, do ponto de vista do usuário.
 
 ---
 
 # 🆚 Integração x E2E
 
-| 🔎 Característica | 🔗 Integração          | 🌐 E2E                   |
-| ----------------- | ---------------------- | ------------------------ |
-| 🎯 Objetivo       | Testar comunicação     | Testar jornada completa  |
-| 👤 Usuário        | Indireto               | Simulado                 |
-| 🌐 Navegador      | Pode não utilizar      | Normalmente utiliza      |
-| 🔌 API            | Muito comum            | Pode participar do fluxo |
-| 📦 Escopo         | Médio                  | Maior                    |
-| ⚡ Velocidade      | Geralmente mais rápido | Geralmente mais demorado |
-| 💡 Exemplo        | Componente → API       | Login → Dashboard        |
+| Característica  | Teste de Integração      | Teste E2E                  |
+| --------------- | ------------------------ | -------------------------- |
+| 🎯 Foco         | Comunicação entre partes | Fluxo completo             |
+| 👤 Usuário real | Não necessariamente      | Simulado                   |
+| 🌐 Navegador    | Opcional                 | Geralmente utilizado       |
+| 🔗 APIs         | Frequentemente testadas  | Podem fazer parte do fluxo |
+| 🧪 Escopo       | Médio                    | Amplo                      |
+| ⏱️ Execução     | Geralmente mais rápida   | Geralmente mais lenta      |
+| 💡 Exemplo      | Tela → API               | Login → Dashboard          |
 
-### 💭 Em uma frase:
+### 📌 Resumindo:
 
-**Integração:**
+> **Teste de Integração:** verifica se as partes do sistema conseguem conversar corretamente.
 
-> "As partes do sistema estão conversando?"
-
-**E2E:**
-
-> "O usuário consegue completar sua jornada?"
+> **Teste E2E:** verifica se o sistema funciona corretamente durante uma jornada completa do usuário.
 
 ---
 
-# 🛠️ Tecnologias
+# 🛠️ 3. Ferramentas para Testes E2E
 
-As tecnologias foram escolhidas de acordo com suas funções no desenvolvimento e automação dos testes.
+Para automatizar testes End-to-End, existem diversas ferramentas disponíveis.
 
-<p align="center">
+## 🌲 Cypress
 
-<img src="https://skillicons.dev/icons?i=html,css,js,cypress,playwright,git,github" />
+O **Cypress** é uma ferramenta bastante utilizada para testes automatizados de aplicações web.
 
-</p>
+Com ele, podemos:
 
-### 🟧 HTML5
-
-Responsável pela **estrutura das páginas** utilizadas na aplicação.
-
-### 🟦 CSS3
-
-Responsável pela **estilização e apresentação visual**.
-
-### 🟨 JavaScript
-
-Utilizado para a **lógica da aplicação e criação dos testes automatizados**.
-
-### 🟩 Cypress
-
-Framework utilizado para realizar **testes automatizados em aplicações web**.
-
-### 🟢 Playwright
-
-Ferramenta utilizada para **automação de navegadores e testes E2E**.
-
-### ⚫ Git & GitHub
-
-Utilizados para **versionamento e armazenamento do projeto**.
-
----
-
-# 🤖 Ferramentas E2E
-
-## 🟩 Cypress
-
-O Cypress permite criar testes que simulam ações do usuário diretamente no navegador.
+* 🌐 Abrir páginas;
+* 🖱️ Clicar em elementos;
+* ✏️ Preencher campos;
+* 🔎 Verificar textos;
+* 🔐 Testar login;
+* ✅ Validar resultados;
+* 📸 Registrar evidências dos testes.
 
 ### Exemplo:
 
 ```javascript
-describe('Login', () => {
-
+describe('Teste de Login', () => {
   it('deve realizar login com sucesso', () => {
-
     cy.visit('http://localhost:3000');
 
-    cy.get('#email')
-      .type('usuario@email.com');
+    cy.get('#email').type('usuario@email.com');
+    cy.get('#senha').type('123456');
 
-    cy.get('#senha')
-      .type('123456');
+    cy.get('#btn-login').click();
 
-    cy.get('#btn-login')
-      .click();
-
-    cy.contains('Bem-vindo')
-      .should('be.visible');
-
+    cy.contains('Bem-vindo').should('be.visible');
   });
-
 });
 ```
 
 ---
 
-## 🟢 Playwright
+## 🎭 Playwright
 
-O Playwright também permite automatizar navegadores e criar cenários E2E.
+O **Playwright** também é uma ferramenta utilizada para automação de testes E2E.
+
+Ele permite automatizar navegadores e simular ações realizadas por usuários.
+
+### Exemplo:
 
 ```javascript
 import { test, expect } from '@playwright/test';
 
 test('Login com sucesso', async ({ page }) => {
-
   await page.goto('http://localhost:3000');
 
-  await page.fill(
-    '#email',
-    'usuario@email.com'
-  );
-
-  await page.fill(
-    '#senha',
-    '123456'
-  );
+  await page.fill('#email', 'usuario@email.com');
+  await page.fill('#senha', '123456');
 
   await page.click('#btn-login');
 
-  await expect(
-    page.getByText('Bem-vindo')
-  ).toBeVisible();
-
+  await expect(page.getByText('Bem-vindo')).toBeVisible();
 });
 ```
 
 ---
 
-# 🧪 Demonstração prática
+# 🧪 4. Prática — Teste E2E
 
-### 🎬 Cenário
+A parte prática do projeto consiste na criação de um teste automatizado capaz de executar uma jornada no navegador.
 
-O usuário precisa realizar login no sistema.
+### 🔐 Fluxo escolhido: Login
 
-### 📋 Cenário de teste
+O teste deverá:
 
-| Etapa | Ação                | Resultado esperado |
-| ----- | ------------------- | ------------------ |
-| 01    | Acessar sistema     | Página carregada   |
-| 02    | Informar e-mail     | Campo preenchido   |
-| 03    | Informar senha      | Campo preenchido   |
-| 04    | Clicar em entrar    | Requisição enviada |
-| 05    | Validar resposta    | Login realizado    |
-| 06    | Verificar dashboard | Dashboard exibido  |
+1. 🌐 Acessar a aplicação;
+2. 🔐 Encontrar a tela de login;
+3. ✏️ Preencher o usuário;
+4. 🔑 Preencher a senha;
+5. 🖱️ Clicar no botão de login;
+6. ✅ Verificar se o login foi realizado;
+7. 🏠 Validar o acesso à página seguinte.
 
----
-
-# 📊 Fluxo do teste
+### Resultado esperado
 
 ```text
-                 🚀 INÍCIO
-                    │
-                    ▼
-            🌐 Abrir aplicação
-                    │
-                    ▼
-             🔐 Tela de Login
-                    │
-                    ▼
-             📧 Informar e-mail
-                    │
-                    ▼
-              🔑 Informar senha
-                    │
-                    ▼
-              🖱️ Clicar em entrar
-                    │
-                    ▼
-             🔌 Comunicação API
-                    │
-                    ▼
-             🔎 Validar resposta
-                    │
-             ┌──────┴──────┐
-             │             │
-             ▼             ▼
-           ✅ OK          ❌ ERRO
-             │             │
-             ▼             ▼
-       🏠 Dashboard    🚨 Falha
+[ Acessar aplicação ]
+          ↓
+[ Preencher login ]
+          ↓
+[ Preencher senha ]
+          ↓
+[ Clicar em Entrar ]
+          ↓
+[ Sistema processa ]
+          ↓
+[ Usuário autenticado ]
+          ↓
+[ Dashboard exibido ]
 ```
 
 ---
 
 # 📂 Estrutura do Projeto
 
+Uma possível organização para o projeto:
+
 ```text
 📦 testes-integracao-e2e
 │
-├── 📁 src
-│   ├── 📄 index.html
-│   ├── 📄 style.css
-│   └── 📄 script.js
+├── 📁 cypress/
+│   ├── 📁 e2e/
+│   │   └── login.cy.js
+│   │
+│   ├── 📁 fixtures/
+│   └── 📁 support/
 │
-├── 📁 cypress
-│   ├── 📁 e2e
-│   │   └── 📄 login.cy.js
-│   │
-│   ├── 📁 fixtures
-│   │
-│   └── 📁 support
+├── 📁 src/
+│   └── arquivos-da-aplicacao
 │
 ├── 📄 package.json
 ├── 📄 cypress.config.js
 └── 📄 README.md
 ```
 
----
-
-# ✅ O que foi aprendido?
-
-Ao final do projeto, foi possível compreender:
-
-* 🔗 O funcionamento dos Testes de Integração;
-* 🌐 O conceito de Testes End-to-End;
-* 👤 A simulação da jornada de um usuário;
-* 🤖 A automação de testes;
-* 🧪 A criação de cenários E2E;
-* 🟩 O funcionamento do Cypress;
-* 🟢 O funcionamento do Playwright;
-* ✅ A importância da validação de fluxos completos.
+> A estrutura pode ser adaptada de acordo com a ferramenta utilizada e com a organização da aplicação.
 
 ---
 
-# 🏆 Conclusão
+# 🔍 O que o teste está validando?
 
-Os **Testes de Integração** e os **Testes End-to-End** possuem papéis diferentes, mas complementares dentro da qualidade de software.
+Durante a execução do teste E2E, podemos validar:
 
-Enquanto os testes de integração verificam se diferentes partes da aplicação conseguem trabalhar juntas, os testes E2E analisam a aplicação através de uma **jornada completa do usuário**.
-
-Com ferramentas como **Cypress** e **Playwright**, esse processo pode ser automatizado, tornando os testes mais rápidos, repetíveis e confiáveis.
-
-> 💻 **Código funcionando é importante.
-> Código funcionando com qualidade é essencial.** 🧪
+* ✅ A página de login é carregada;
+* ✅ Os campos estão disponíveis;
+* ✅ Os dados podem ser inseridos;
+* ✅ O botão de login funciona;
+* ✅ A requisição é processada;
+* ✅ O usuário é autenticado;
+* ✅ O sistema redireciona corretamente;
+* ✅ A página esperada é exibida.
 
 ---
+
+# 📊 Importância dos Testes
+
+Os testes de integração e E2E são importantes porque ajudam a encontrar problemas que podem não aparecer quando cada parte do sistema é testada separadamente.
+
+### 🔗 Testes de Integração
+
+Garantem que os componentes e serviços consigam **se comunicar corretamente**.
+
+### 🌐 Testes E2E
+
+Garantem que uma **jornada completa do usuário** funcione como esperado.
+
+Juntos, eles contribuem para aumentar a:
+
+**Qualidade → Confiabilidade → Estabilidade → Experiência do usuário**
+
+---
+
+# 🚀 Tecnologias e Ferramentas
 
 <p align="center">
 
-### 🧪 QA • 🔗 Integração • 🌐 E2E • 🤖 Automação
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge\&logo=html5\&logoColor=white)
 
-**Desenvolvido para fins acadêmicos — SENAI**
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge\&logo=css3\&logoColor=white)
+
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
+
+![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge\&logo=cypress\&logoColor=white)
+
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge\&logo=playwright\&logoColor=white)
 
 </p>
 
+---
+
+# 📌 Conclusão
+
+Os **Testes de Integração** e os **Testes End-to-End** são fundamentais para garantir que uma aplicação não apenas funcione individualmente, mas também consiga executar seus fluxos completos corretamente.
+
+Neste projeto, foi possível compreender a diferença entre esses tipos de teste, conhecer ferramentas de automação como **Cypress e Playwright** e aplicar os conceitos em um fluxo prático de navegação e login.
+
+> 🧪 **Testar não é apenas encontrar erros. É garantir qualidade em cada etapa da experiência do usuário.**
+
+---
+
+## 👩‍💻 Projeto Acadêmico
+
+**Tema:** Testes de Integração e End-to-End (E2E)
+**Área:** Quality Assurance (QA) / Testes de Software
+**Instituição:** SENAI
+**Objetivo:** Estudo, demonstração e prática de testes automatizados.
+
+---
+
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2EAD33,50:00A98F,100:F7DF1E&height=120&section=footer"/>
+  Desenvolvido para fins educacionais 💗
 </p>
